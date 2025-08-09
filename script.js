@@ -216,28 +216,28 @@ class Calendar {
         const dateStr = date.toDateString();
 
         if (this.distributionDates.target12.some(d => d.toDateString() === dateStr)) {
-            distributions.push({ type: 'target12', label: 'T12' });
+            distributions.push({ type: 'target12', label: 'YMX T12' });
         }
 
         if (this.distributionDates.groupA.some(d => d.toDateString() === dateStr)) {
-            distributions.push({ type: 'group-a', label: 'A' });
+            distributions.push({ type: 'group-a', label: 'YMX Group A' });
         }
 
         if (this.distributionDates.groupB.some(d => d.toDateString() === dateStr)) {
-            distributions.push({ type: 'group-b', label: 'B' });
+            distributions.push({ type: 'group-b', label: 'YMX Group B' });
         }
 
         if (this.distributionDates.groupC.some(d => d.toDateString() === dateStr)) {
-            distributions.push({ type: 'group-c', label: 'C' });
+            distributions.push({ type: 'group-c', label: 'YMX Group C' });
         }
 
         if (this.distributionDates.groupD.some(d => d.toDateString() === dateStr)) {
-            distributions.push({ type: 'group-d', label: 'D' });
+            distributions.push({ type: 'group-d', label: 'YMX Group D' });
         }
 
         // Add Weekly tag if any group is present (since Weekly = Groups A/B/C/D)
         if (distributions.some(d => ['group-a', 'group-b', 'group-c', 'group-d'].includes(d.type))) {
-            distributions.push({ type: 'weekly', label: 'W' });
+            distributions.push({ type: 'weekly', label: 'YMX Weekly' });
         }
 
         return distributions;

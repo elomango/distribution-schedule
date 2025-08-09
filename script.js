@@ -3,6 +3,7 @@ class Calendar {
         this.currentDate = new Date();
         this.currentMonth = this.currentDate.getMonth();
         this.currentYear = this.currentDate.getFullYear();
+        this.showYieldMax = true;
         
         this.distributionDates = {
             target12: [
@@ -93,6 +94,20 @@ class Calendar {
         document.getElementById('prev-btn').addEventListener('click', () => this.previousMonth());
         document.getElementById('next-btn').addEventListener('click', () => this.nextMonth());
         document.getElementById('today-btn').addEventListener('click', () => this.goToToday());
+        document.getElementById('yieldmax-btn').addEventListener('click', () => this.toggleYieldMax());
+    }
+
+    toggleYieldMax() {
+        this.showYieldMax = !this.showYieldMax;
+        const btn = document.getElementById('yieldmax-btn');
+        
+        if (this.showYieldMax) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+        
+        this.renderCalendar();
     }
 
     goToToday() {
@@ -141,9 +156,17 @@ class Calendar {
         calendar.innerHTML = '';
 
         // Add day headers
-        dayNames.forEach(day => {
+        dayNames.forEach((day, index) => {
             const dayHeader = document.createElement('div');
             dayHeader.className = 'calendar-day header';
+            
+            // Add special classes for weekend headers
+            if (index === 0) { // Sunday
+                dayHeader.classList.add('sunday');
+            } else if (index === 6) { // Saturday
+                dayHeader.classList.add('saturday');
+            }
+            
             dayHeader.textContent = day;
             calendar.appendChild(dayHeader);
         });
@@ -215,29 +238,32 @@ class Calendar {
         const distributions = [];
         const dateStr = date.toDateString();
 
-        if (this.distributionDates.target12.some(d => d.toDateString() === dateStr)) {
-            distributions.push({ type: 'target12', label: 'YMX T12' });
-        }
+        // Only show YieldMax distributions if the filter is active
+        if (this.showYieldMax) {
+            if (this.distributionDates.target12.some(d => d.toDateString() === dateStr)) {
+                distributions.push({ type: 'target12', label: 'YMX T12' });
+            }
 
-        if (this.distributionDates.groupA.some(d => d.toDateString() === dateStr)) {
-            distributions.push({ type: 'group-a', label: 'YMX Group A' });
-        }
+            if (this.distributionDates.groupA.some(d => d.toDateString() === dateStr)) {
+                distributions.push({ type: 'group-a', label: 'YMX Group A' });
+            }
 
-        if (this.distributionDates.groupB.some(d => d.toDateString() === dateStr)) {
-            distributions.push({ type: 'group-b', label: 'YMX Group B' });
-        }
+            if (this.distributionDates.groupB.some(d => d.toDateString() === dateStr)) {
+                distributions.push({ type: 'group-b', label: 'YMX Group B' });
+            }
 
-        if (this.distributionDates.groupC.some(d => d.toDateString() === dateStr)) {
-            distributions.push({ type: 'group-c', label: 'YMX Group C' });
-        }
+            if (this.distributionDates.groupC.some(d => d.toDateString() === dateStr)) {
+                distributions.push({ type: 'group-c', label: 'YMX Group C' });
+            }
 
-        if (this.distributionDates.groupD.some(d => d.toDateString() === dateStr)) {
-            distributions.push({ type: 'group-d', label: 'YMX Group D' });
-        }
+            if (this.distributionDates.groupD.some(d => d.toDateString() === dateStr)) {
+                distributions.push({ type: 'group-d', label: 'YMX Group D' });
+            }
 
-        // Add Weekly tag if any group is present (since Weekly = Groups A/B/C/D)
-        if (distributions.some(d => ['group-a', 'group-b', 'group-c', 'group-d'].includes(d.type))) {
-            distributions.push({ type: 'weekly', label: 'YMX Weekly' });
+            // Add Weekly tag if any group is present (since Weekly = Groups A/B/C/D)
+            if (distributions.some(d => ['group-a', 'group-b', 'group-c', 'group-d'].includes(d.type))) {
+                distributions.push({ type: 'weekly', label: 'YMX Weekly' });
+            }
         }
 
         return distributions;

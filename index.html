@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Distribution Schedule Calendar</title>
+    <title>YieldMax ETFs Distribution Schedule</title>
     <link rel="stylesheet" href="styles.css">
     
     <!-- Google AdSense -->
@@ -14,416 +14,118 @@
     <div class="container">
         <header>
             <h1>YieldMax ETFs Distribution Schedule</h1>
+            <p>Monthly calendar view of all distribution declaration dates</p>
         </header>
 
         <div class="calendar-container">
-            <div class="calendar-navigation">
-                <button id="prevMonth">&lt;</button>
-                <h2 id="currentMonth">January 2025</h2>
-                <button id="nextMonth">&gt;</button>
+            <div class="calendar-header">
+                <button id="prev-btn">&lt;</button>
+                <h2 id="month-year"></h2>
+                <button id="next-btn">&gt;</button>
             </div>
-            
-            <div class="today-navigation">
-                <button id="todayBtn">오늘</button>
-            </div>
-            
-            <div class="calendar-grid">
-                <div class="calendar-header">
-                    <div class="day-header">Sun</div>
-                    <div class="day-header">Mon</div>
-                    <div class="day-header">Tue</div>
-                    <div class="day-header">Wed</div>
-                    <div class="day-header">Thu</div>
-                    <div class="day-header">Fri</div>
-                    <div class="day-header">Sat</div>
-                </div>
-                <div class="calendar-body" id="calendarBody">
-                </div>
-            </div>
-        </div>
-
-        <div class="legend">
-            <div class="legend-item">
-                <span class="legend-color target12"></span>
-                <span>Target12</span>
-            </div>
-            <div class="legend-item">
-                <span class="legend-color weekly"></span>
-                <span>Weekly</span>
-            </div>
-            <div class="legend-item">
-                <span class="legend-color group-a"></span>
-                <span>Group-A</span>
-            </div>
-            <div class="legend-item">
-                <span class="legend-color group-b"></span>
-                <span>Group-B</span>
-            </div>
-            <div class="legend-item">
-                <span class="legend-color group-c"></span>
-                <span>Group-C</span>
-            </div>
-            <div class="legend-item">
-                <span class="legend-color group-d"></span>
-                <span>Group-D</span>
-            </div>
+            <button id="today-btn">Today</button>
+            <div id="calendar" class="calendar-grid"></div>
         </div>
 
         <div class="etf-tables">
-            <h2>Weekly Payers and Group ETFs</h2>
-            
+            <h2>ETF Groupings</h2>
             <div class="table-container">
                 <table class="etf-table">
                     <thead>
                         <tr>
-                            <th>Target 12</th>
+                            <th>Target12</th>
                             <th>Weekly Payers</th>
-                            <th>Group A</th>
-                            <th>Group B</th>
-                            <th>Group C</th>
-                            <th>Group D</th>
+                            <th>Group A ETFs</th>
+                            <th>Group B ETFs</th>
+                            <th>Group C ETFs</th>
+                            <th>Group D ETFs</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>BIGY</strong><br>
-                                    Target 12™ Big 50 Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>CHPY</strong><br>
-                                    Semiconductor Portfolio Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>BRKC</strong><br>
-                                    BRK.B Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>BABO</strong><br>
-                                    BABA Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>ABNY</strong><br>
-                                    ABNB Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>AIYY</strong><br>
-                                    AI Option Income
-                                </div>
-                            </td>
+                            <td>BIGY</td>
+                            <td>CHPY</td>
+                            <td>BRKC</td>
+                            <td>BABO</td>
+                            <td>ABNY</td>
+                            <td>AIYY</td>
                         </tr>
                         <tr>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>SOXY</strong><br>
-                                    Target 12™ Semiconductor Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>GPTY</strong><br>
-                                    Al & Tech Portfolio Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>CRSH</strong><br>
-                                    DASH Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>DIPS</strong><br>
-                                    DIS Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>AMDY</strong><br>
-                                    AMD Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>AMZY</strong><br>
-                                    AMZN Option Income
-                                </div>
-                            </td>
+                            <td>SOXY</td>
+                            <td>GPTY</td>
+                            <td>CRSH</td>
+                            <td>DIPS</td>
+                            <td>AMDY</td>
+                            <td>AMZY</td>
                         </tr>
                         <tr>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>RNTY</strong><br>
-                                    Target 12™ Real Estate Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>LFGY</strong><br>
-                                    Crypto Portfolio Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>FEAT</strong><br>
-                                    Dorsey Wright Featured 5 Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>FBY</strong><br>
-                                    META Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>CONY</strong><br>
-                                    COIN Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>APLY</strong><br>
-                                    AAPL Option Income
-                                </div>
-                            </td>
+                            <td>RNTY</td>
+                            <td>LFGY</td>
+                            <td>FEAT</td>
+                            <td>FBY</td>
+                            <td>CONY</td>
+                            <td>APLY</td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>QDTY</strong><br>
-                                    Nasdaq 100 0DTE Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>FIVY</strong><br>
-                                    Dorsey Wright Hybrid 5 Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>GDXY</strong><br>
-                                    Gold Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>CVNY</strong><br>
-                                    CVNA Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>DISO</strong><br>
-                                    DIS Option Income
-                                </div>
-                            </td>
+                            <td>QDTY</td>
+                            <td>FIVY</td>
+                            <td>GDXY</td>
+                            <td>CVNY</td>
+                            <td>DISO</td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>RDTY</strong><br>
-                                    R2000 0DTE Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>GOOY</strong><br>
-                                    GOOGL Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>JPMO</strong><br>
-                                    JPM Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>DRAY</strong><br>
-                                    DKNG Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>MSTY</strong><br>
-                                    MSTR Option Income
-                                </div>
-                            </td>
+                            <td>RDTY</td>
+                            <td>GOOY</td>
+                            <td>JPMO</td>
+                            <td>DRAY</td>
+                            <td>MSTY</td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>SDTY</strong><br>
-                                    S&P 500 0DTE Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>OARK</strong><br>
-                                    ARKK Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>MARO</strong><br>
-                                    MA Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>FIAT</strong><br>
-                                    Short COIN Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>SMCY</strong><br>
-                                    SMCI Option Income
-                                </div>
-                            </td>
+                            <td>SDTY</td>
+                            <td>OARK</td>
+                            <td>MARO</td>
+                            <td>FIAT</td>
+                            <td>SMCY</td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>ULTY</strong><br>
-                                    Ultra Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>RBLY</strong><br>
-                                    RBLX Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>MRNY</strong><br>
-                                    MRNA Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>HOOY</strong><br>
-                                    HOOD Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>WNTR</strong><br>
-                                    WMT Option Income
-                                </div>
-                            </td>
+                            <td>ULTY</td>
+                            <td>RBLY</td>
+                            <td>MRNY</td>
+                            <td>HOOY</td>
+                            <td>WNTR</td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>YMAG</strong><br>
-                                    Magnificent 7 FoF
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>SNOY</strong><br>
-                                    SONY Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>NVDY</strong><br>
-                                    NVDA Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>MSFO</strong><br>
-                                    MSFT Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>XYZY</strong><br>
-                                    XYZ Option Income
-                                </div>
-                            </td>
+                            <td>YMAG</td>
+                            <td>SNOY</td>
+                            <td>NVDY</td>
+                            <td>MSFO</td>
+                            <td>XYZY</td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>YMAX</strong><br>
-                                    Universe FoF
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>TSLY</strong><br>
-                                    TSLA Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>PLTY</strong><br>
-                                    PLTR Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>NFLY</strong><br>
-                                    NFLX Option Income
-                                </div>
-                            </td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>YQQQ</strong><br>
-                                    QQQ Option Income
-                                </div>
-                            </td>
+                            <td>YMAX</td>
+                            <td>TSLY</td>
+                            <td>PLTY</td>
+                            <td>NFLY</td>
+                            <td>YQQQ</td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>TSMY</strong><br>
-                                    TSLA Option Income
-                                </div>
-                            </td>
+                            <td>TSMY</td>
                             <td></td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>PYPY</strong><br>
-                                    PYPL Option Income
-                                </div>
-                            </td>
+                            <td>PYPY</td>
                             <td></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>XOMO</strong><br>
-                                    XOM Option Income
-                                </div>
-                            </td>
+                            <td>XOMO</td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -431,12 +133,7 @@
                         <tr>
                             <td></td>
                             <td></td>
-                            <td>
-                                <div class="etf-item">
-                                    <strong>YBIT</strong><br>
-                                    BTC Option Income
-                                </div>
-                            </td>
+                            <td>YBIT</td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -447,13 +144,13 @@
         </div>
 
         <div class="link-section">
-            <a href="https://www.yieldmaxetfs.com/distribution-schedule/" target="_blank" class="source-link">
-                Visit YieldMax ETFs Distribution Schedule
+            <a href="https://www.yieldmaxetfs.com/distribution-schedule/" target="_blank" class="visit-link">
+                Visit Original YieldMax Distribution Schedule
             </a>
         </div>
 
         <!-- Footer Ad -->
-        <div class="ad-container footer-ad">
+        <div class="ad-container">
             <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-8489358176879104"
